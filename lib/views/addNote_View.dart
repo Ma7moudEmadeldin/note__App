@@ -9,8 +9,8 @@ class addNote_Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+    return BlocProvider(
+      create: (context) => addNotesCubit(),
       child: BlocConsumer<addNotesCubit, addnotesState>(
         listener: (context, state) {
           if (state is addNoteFailre) {
@@ -23,7 +23,7 @@ class addNote_Widget extends StatelessWidget {
         builder: (context, state) {
           return ModalProgressHUD(
               inAsyncCall: state is addNoteLoading ? true : false,
-              child: addNoteForm());
+              child: SingleChildScrollView(child: addNoteForm()));
         },
       ),
     );
