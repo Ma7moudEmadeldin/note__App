@@ -21,9 +21,9 @@ class addNote_Widget extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return ModalProgressHUD(
-              inAsyncCall: state is addNoteLoading ? true : false,
-              child: SingleChildScrollView(child: addNoteForm()));
+          return AbsorbPointer(
+            absorbing: state is addNoteLoading ? true : false,
+            child: SingleChildScrollView(child: addNoteForm()));
         },
       ),
     );

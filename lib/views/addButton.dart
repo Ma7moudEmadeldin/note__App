@@ -1,16 +1,13 @@
-
 import 'package:flutter/material.dart';
 
 class add_Button_Widget extends StatelessWidget {
-   add_Button_Widget({
-    super.key,required this.onTap
-  });
-void Function()? onTap;
+  add_Button_Widget({super.key, required this.onTap, this.isLoading = false});
+  void Function()? onTap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
@@ -21,11 +18,13 @@ void Function()? onTap;
               color: Colors.amber,
               border: Border.all(color: Colors.white)),
           child: Center(
-              child: Text(
-            'ADD',
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold),
-          )),
+              child: isLoading
+                  ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator( color: Colors.black, )) 
+                  : const Text(
+                      'ADD',
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    )),
         ),
       ),
     );
