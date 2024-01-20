@@ -15,7 +15,7 @@ class addNote_Widget extends StatelessWidget {
 }
 
 class addNoteForm extends StatefulWidget {
-   addNoteForm({
+  addNoteForm({
     super.key,
   });
 
@@ -31,15 +31,16 @@ class _addNoteFormState extends State<addNoteForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-       key: formKey,
-       autovalidateMode: autovalidateMode,
+      key: formKey,
+      autovalidateMode: autovalidateMode,
       child: Column(
         children: [
           textFieldWidget(
-            onSaved: (data) {
-              title = data;
-            },
-            hintText: 'title', maxLine: 1),
+              onSaved: (data) {
+                title = data;
+              },
+              hintText: 'title',
+              maxLine: 1),
           textFieldWidget(
             onSaved: (data) {
               subtitle = data;
@@ -50,16 +51,16 @@ class _addNoteFormState extends State<addNoteForm> {
           SizedBox(
             height: 30,
           ),
-          add_Button_Widget(onTap: () {
-            if(formKey.currentState!.validate()){
-              formKey.currentState!.save();
-            }else{
-              autovalidateMode =AutovalidateMode.always;
-              setState(() {
-                
-              });
-            }
-          },),
+          add_Button_Widget(
+            onTap: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          ),
           SizedBox(
             height: 30,
           )
