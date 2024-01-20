@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/addButton.dart';
-import 'package:noteapp/textField.dart';
+import 'package:noteapp/views/addButton.dart';
+import 'package:noteapp/views/textField.dart';
 
 class addNote_Widget extends StatelessWidget {
   const addNote_Widget({super.key});

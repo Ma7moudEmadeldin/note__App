@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/top_widget.dart';
+import 'package:noteapp/views/top_widget.dart';
 
 class customAppBar extends StatelessWidget {
   const customAppBar({super.key});

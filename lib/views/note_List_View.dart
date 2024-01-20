@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/note_Items.dart';
+import 'package:noteapp/views/note_Items.dart';
 
 class noteListView extends StatelessWidget {
   noteListView({

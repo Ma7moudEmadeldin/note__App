@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noteapp/edit_note.dart';
+import 'package:noteapp/views/edit_note.dart';
 
 class noteItem extends StatelessWidget {
   const noteItem({super.key, required this.color});
