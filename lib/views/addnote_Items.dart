@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:noteapp/cubit/addNoteCubit/addNotecubit.dart';
 import 'package:noteapp/model/note_Model.dart';
 import 'package:noteapp/views/addButton.dart';
+import 'package:noteapp/views/colors_ListView.dart';
 import 'package:noteapp/views/textField.dart';
 
 class addNoteForm extends StatefulWidget {
@@ -19,7 +20,7 @@ class _addNoteFormState extends State<addNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  String? title, subtitle ,  date;
+  String? title, subtitle, date;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -43,21 +44,18 @@ class _addNoteFormState extends State<addNoteForm> {
           SizedBox(
             height: 30,
           ),
+          colorListView(),
           BlocBuilder<addNotesCubit, NoteCubitState>(
             builder: (context, state) {
-               
               return add_Button_Widget(
-                
-                isLoading:state is addNoteLoading ? true: false,
+                isLoading: state is addNoteLoading ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     var currentDate = DateTime.now();
                     var formateDate = DateFormat.Hm().format(currentDate);
                     var Note_Model = note_Model(
-                        title: title!,
-                        subtitle: subtitle!,
-                        date: formateDate);
+                        title: title!, subtitle: subtitle!, date: formateDate);
                     BlocProvider.of<addNotesCubit>(context).addNote(Note_Model);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
