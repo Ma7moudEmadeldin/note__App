@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noteapp/cubit/addNoteCubit/addNote_cubit_cubit.dart';
+import 'package:noteapp/cubit/addNoteCubit/addNotecubit.dart';
 import 'package:noteapp/model/note_Model.dart';
 import 'package:noteapp/views/addButton.dart';
 import 'package:noteapp/views/textField.dart';
@@ -18,7 +18,7 @@ class _addNoteFormState extends State<addNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  String? title, subtitle;
+  String? title, subtitle ,  date;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -42,7 +42,7 @@ class _addNoteFormState extends State<addNoteForm> {
           SizedBox(
             height: 30,
           ),
-          BlocBuilder<addNotesCubit, addnotesState>(
+          BlocBuilder<addNotesCubit, NoteCubitState>(
             builder: (context, state) {
                
               return add_Button_Widget(

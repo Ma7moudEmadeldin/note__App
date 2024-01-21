@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noteapp/cubit/editNoteCubit/edit_note_cubit_cubit.dart';
+import 'package:noteapp/cubit/get_Notes_Cubit/get_notes_cubit.dart';
 import 'package:noteapp/views/addNote_View.dart';
-import 'package:noteapp/views/custom_Appbar.dart';
-import 'package:noteapp/views/note_List_View.dart';
+import 'package:noteapp/views/notesBody.dart';
 
-class notes_View extends StatelessWidget {
+class notes_View extends StatefulWidget {
   const notes_View({super.key});
 
   @override
+  State<notes_View> createState() => _notes_ViewState();
+}
+
+class _notes_ViewState extends State<notes_View> {
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditNoteCubitCubit(),
+      create: (context) => GetNotesCubit(),
       child: Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () {
@@ -25,12 +29,7 @@ class notes_View extends StatelessWidget {
             },
             child: Icon(Icons.add),
           ),
-          body: Column(
-            children: [
-              customAppBar(),
-              Expanded(child: noteListView()),
-            ],
-          )),
+          body: noteBody()),
     );
   }
 }
