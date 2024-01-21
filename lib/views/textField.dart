@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 
 class textFieldWidget extends StatelessWidget {
-   textFieldWidget({super.key , required this.hintText ,  this.maxLine = 1 , this.onSaved});
+   textFieldWidget({super.key , required this.hintText ,  this.maxLine = 1 , this.onSaved , this.onChanged});
 String hintText;
 int maxLine ;
  void Function(String?)? onSaved;
+Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,6 +15,7 @@ int maxLine ;
           Padding(
             padding: EdgeInsets.only(top: 16 , left: 16 , right: 16 , bottom: 8),
             child: TextFormField(
+              onChanged: onChanged,
               onSaved: onSaved,
               validator: (value) {
                 if(value?.isEmpty ?? true){
